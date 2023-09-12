@@ -2,10 +2,18 @@
 title: "R Notebook"
 output: html_notebook
 ---
-
+## R Markdown
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+## Первый чанк
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(flextable)
+library(DescTools)
+```
 
 ```{r}
 plot(cars)
@@ -17,6 +25,7 @@ When you save the notebook, an HTML file containing the code and output will be 
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
 
+## Мелкие задачи на описательную статистику
 Поиск среднего арифмитического
 ```{r}
 mean(c(1, -1, 5, -12, -12, 3, 8, -10, 0))
@@ -46,7 +55,7 @@ max(a, na.rm=T)
 
 ```
 
-Расчёт квантилей
+
 
 
 
