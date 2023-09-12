@@ -7,6 +7,7 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
+
 ## Первый чанк
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -24,6 +25,7 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
 
 ## Мелкие задачи на описательную статистику
 Поиск среднего арифмитического
@@ -53,6 +55,9 @@ a <- c(90.48, 31.16, 44.4, 21.94, 84.37, 53.15, 81.15, 47.86, 63.23, 46.75, 102.
 min(a, na.rm=T)
 max(a, na.rm=T)
 
+```
+```{r}
+read_delim("example_blood.tsv", delim = NULL, quote = "\"", na = c("", "NA"), skip = 0, n_max = Inf, col_names = TRUE)
 ```
 
 
