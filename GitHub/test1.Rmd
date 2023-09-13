@@ -89,11 +89,51 @@ data <- read_delim("example_blood.tsv", delim = NULL, quote = "\"", na = c("", "
 
 psych::describe(numeric_data)
 
-1.78/sqrt(100)
 ```
 
+Обращение к переменным tibble
+```{r}
+data <- as_tibble(data)
+# data$'Группа крови'
+# data[["Группа крови"]]
+
+#data %>% select(function(x) sd(x, na.rm = TRUE) > 1)
+
+# data %>% select(where(is.numeric) & where(function(x) sd(x, na.rm = TRUE) > 1))
+
+data %>% select(`Группа`, function(x) !is.factor(x))
+
+#data %>% select(Группа крови, `Возраст`, function(x) anyNA(x))
+
+data %>% select(`Группа крови`, `Возраст`, function(x) anyNA(x))
+
+data %>% select(function(x) any(str_detect(x, "Жен")))
+
+data %>% select(`Группа`, (function(x) is.factor(x)) | where(function(x) is.numeric(x)))
+
+data %>% select(`Пол`, `Группа`, `Базофилы_E1`)
 
 
+```
 
+Склеивание таблицы по столбцам
+```{r}
+data_1 <- tibble(var_1 = 1:8) %>% mutate(id = row_number())
+data_1
+data_2 <- tibble(var_2 = rnorm(10)) %>% mutate('Subject ID' = row_number())
+data_2
+
+data_1 %>% right_join(data_2, by = c('id' = 'Subject ID'))
+```
+
+Группировка данных
+```{r}
+data %>% group_by("Группа") %>% ungroup()
+```
+
+Сплит данных (Почему используют косые ковычки?)
+```{r}
+data %>% split(~ `Группа`)
+```
 
 
